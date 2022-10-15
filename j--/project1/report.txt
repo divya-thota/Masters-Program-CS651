@@ -1,0 +1,64 @@
+1. Enter the number of hours it took you to complete the project between
+   the <<< and >>> signs below (eg, <<<10>>>).
+
+   <<< 10 >>>
+   
+2. Enter the difficulty level (1: very easy; 5: very difficult) of the project
+   between the <<< and >>> signs below (eg, <<<3>>>).
+
+   <<< 3 >>>
+
+3. Did you receive help from anyone? List their names, status (classmate, 
+   CS451/651 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+4. Provide a short description of how you approached each problem, issues you 
+   encountered, and how you resolved those issues.
+
+   Problem 1 (Using CLEmitter)
+      Approach: ...
+      Referred to the java code mentioned in the comments and compared it with the code provided in /tests/clemitter to generate a JVM Byte code using methods like addClass, addMethod, addNoArgInstruction, addMemberAccessInstruction, addReferenceInstruction, addBranchInstruction, addLDCInstruction, addLabel from the class CLEmitter. Implemented different approaches for if/else blocks and for loop in the code by following the instructions mentioned in the write up.
+
+      Issues and resolution: ...
+	  1. I initially did not notice the pseudo code instructions mentioned in the writeup to solve the problem. I wrote my own version of the code and it threw errors during ant build. After I noticed the pseudo code, I modified my code accordingly. 
+	  2. I used the instruction e.addIINCInstruction(2, 1); for C: increment i by 1 as I referred to the code from GenNHellos of /tests/clemitter. I received an error "Accessing value from uninitialized register 2". I changed the instuction to load i value and add 1. I enhanced the code by rewriting the instruction as e.addIINCInstruction(1, 1);
+	  3. I was able to pass the test cases where the number is prime, but even when the number is not prime, the result showed that the number is prime. Upon close inspection of my code, I noticed that this error was due to me wrongfully interpreting the line 
+	  D: if i > n / i goto B : 
+	  as 
+	  D: if i < n / i goto B :
+	  and writing the code for the same. I resolved this and my code was working perfectly without any other issues.
+
+   Problem 2 (Arithmetic Operations)
+      Approach: ...
+	  The problem was straight forward with the instuctions in the writeup. I made the changes required by comparing the format of the muliplication STAR operation and referring to the grammar document for binary operations. I made changes for the unary plus operator by comparing it with unary negate operator. 
+	  
+
+      Issues and resolution: ...
+	  1. I made the changes in Scanner.java but did not notice the '/' check for comments and received the error "Operator / is not supported in j--.". I referred to the textbook and replaced the error message with: return new TokenInfo ( DIV , line );
+	  2. To write JUnaryPlusOp I compared it with the JNegateOp and wrote a similar code. I tried to replace INEG with equivalent JUnaryPlusOp and assumed it was IADD. I did not get the correct output so I replaced it with INEG but I received a negative output. I viewed a similar question on piazza and realised this line of code: output.addNoArgInstruction(INEG); is not even required.
+
+   Problem 3 (Bitwise Operations)
+      Approach: ...
+	  The problem was straight forward with the instuctions in the writeup. It became even more simpler after solving the previous problem. I made the changes required by comparing the format of the existing operations and referring to the grammar document. I added the inclusiveOrExpression, exclusiveOrExpression, andExpression methods in the parser. I referred to the LNOT operator for the NOT operation.
+	  
+
+      Issues and resolution: ...
+	  1. I added the required methods in the parser but I did not change the  lhs = new JLogicalAndOp(line, lhs, equalityExpression()); line of code in the conditionalAndExpression method. The errors were gone after replacing the line with lhs = new JLogicalAndOp(line, lhs, inclusiveOrExpression());
+	  2. I had difficulty following the instructions for the codegen of JComplementOp of the JUnaryExpression.java file as it does not have a direct direct JVM instruction. Computing with exclusiveOr was straight forward but I wrote code for +1 instead of -1. After receiving the wrong output, I checked the documentation to find the right JVM instruction for -1 and replaced ICONST_1 with ICONST_M1. 
+
+   Problem 4 (Shift Operations)
+      Approach: ...
+	  After solving the previous questions, and referring to the same files and the writeup, the code was simple and staight forward. I wrote the shiftExpression method in the parser and according to the grammar document, I replaced additiveExpression() method to shiftExpression() in the relationalExpression() method. The codegen() and analyze() methods were straight forward after finding the ISHL, ISHR, IUSHR instructions.
+
+      Issues and resolution: ...
+	  I did not face any issues while solving this problem.
+
+5. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+	The project became progressively easier as I solved each question. I had very few issues by the time I reached the last two problems. I enjoyed the learning process as it involved creative thinking.
+   ...

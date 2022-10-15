@@ -1,0 +1,60 @@
+1. Enter the number of hours it took you to complete the project between
+   the <<< and >>> signs below (eg, <<<10>>>).
+
+   <<<7>>>
+   
+2. Enter the difficulty level (1: very easy; 5: very difficult) of the project
+   between <<< and >>> signs below (eg, <<<3>>>).
+
+   <<<2>>>
+
+3. Did you receive help from anyone? List their names, status (classmate, 
+   CS451/651 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+4. Provide a short description of how you approached each problem, issues you 
+   encountered, and how you resolved those issues.
+
+   Problem 1 (Multiline Comment)
+      Approach: ...
+	  The problem is very straight forward. I drew the state transition diagram referring to the grammar documentation. I am referring to the single line comment code in the Scanner.java to write a code for the multiline comment. 
+
+      Issues and resolution: ...
+	  1. I executed the code using the ./bin/j-- -t project2/MultiLineComment.java and the code acknowledged the presence of * and /. I modified the code logic to go to nextCh() after reading the *.
+	  2. I added the check ch != '*' in the while loop which made it throw errors for lines 13 and 16 of the code with comments like "/* Accepts ../**/" . It was resolved by removing the check from the while loop and only keeping ch != EOFCH condition.
+	  3. I added the tokenInfo DIV operator without the else check, which executed well in the intial run but threw an error that read "/" after code for problem 2 DIV_ASSIGN was introduced. 
+
+   Problem 2 (Operators)
+      Approach: ...
+	  The problem was straight forward and easy as we already executed the same for Project 1. Retracing the steps in project 1, on how to handle if a part of the operator character already exists in the switch case, helped in executing the problem.
+	  
+
+      Issues and resolution: ...
+	  I did not face any issues as it was straight forward.
+   
+   Problem 3 (Reserved Words)
+      Approach: ...
+	  The problem is very straight forward. I am referring to the ABSTRACT Keyword in the Scanner.java to write a code for the other keywords. 
+	  
+
+      Issues and resolution: ...
+	  I did not face any issues as it was straight forward.
+
+   Problem 4 (Literals)
+      Approach: ...
+	  The problem was straight forward and easy solving for LONG_LITERAL by appending "l" or "L" to Digits. For DOUBLE_LITERAL, I initially implemented the same as I did for LONG_LITERAL by appending "d" or "D". This resulted in the first few test cases passing. Using the grammar documentation, I added each condition of the DOUBLE_LITERAL, checking if the test cases that correspond to each condition are satisfied.  
+
+      Issues and resolution: ...
+	  For the DOUBLE_LITERAL ::= "." DIGITS [ EXPONENT ] [ SUFFIX ] condition, I appended the digit character to the buffer twice, which resulted in multiple occurances of the digits. I realised the issue when I executed the test cases and removed the duplicate code.
+	  
+
+5. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+   The project was easy compared to the first project. I was hoping to find negative case scenarios in the test cases.
+
+   ...
